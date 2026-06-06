@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blogger Offers</title>
+
+<style>
+body{
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+padding:20px;
+margin:0;
+}
+
+.box{
+max-width:500px;
+margin:auto;
+background:#fff;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 10px rgba(0,0,0,.1);
+}
+
+h1{
+text-align:center;
+color:#e91e63;
+}
+
+input{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:1px solid #ddd;
+border-radius:10px;
+box-sizing:border-box;
+}
+
+button{
+width:100%;
+padding:12px;
+margin-top:10px;
+background:#e91e63;
+color:#fff;
+border:none;
+border-radius:10px;
+font-size:16px;
+cursor:pointer;
+}
+
+#result{
+margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Blogger Offers</h1>
+
+<input type="password" id="password" placeholder="كلمة المرور">
+
+<button onclick="login()">دخول</button>
+
+<div id="panel" style="display:none;">
+
+<input id="amazonLink" placeholder="الصقي رابط أمازون هنا">
+
+<button onclick="generateLink()">إنشاء الرابط</button>
+
+<div id="result">
+<input id="shortLink" readonly>
+</div>
+
+</div>
+
+</div>
+
+<script>
+const PASSWORD="Hadeel201020";
+
+function login(){
+let pass=document.getElementById("password").value;
+
+if(pass===PASSWORD){
+document.getElementById("panel").style.display="block";
+}else{
+alert("كلمة المرور غير صحيحة");
+}
+}
+
+function generateLink(){
+
+let amazonLink=document.getElementById("amazonLink").value;
+
+if(!amazonLink){
+alert("ادخلي رابط أمازون");
+return;
+}
+
+let url=new URL(amazonLink);
+
+url.searchParams.delete("tag");
+url.searchParams.set("tag","bloggeroffe05-21");
+
+document.getElementById("shortLink").value=url.toString();
+}
+</script>
+
+</body>
+</html>
